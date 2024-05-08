@@ -1,0 +1,15 @@
+<div class="form-container" [class.error]="titleError || contentError">
+  <input type="text" placeholder="Title" [(ngModel)]="title" />
+
+  @if (titleError) {
+  <div class="error-message">{{ titleError }}</div>
+  }
+
+  <textarea placeholder="Content" [(ngModel)]="content"></textarea>
+
+  @if (contentError) {
+  <div class="error-message">{{ contentError }}</div>
+  }
+
+  <button (click)="saveNote()">{{ note ? "Edit note" : "Create note" }}</button>
+</div>

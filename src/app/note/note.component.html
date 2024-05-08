@@ -1,0 +1,22 @@
+<div style="padding: 20px 40px">
+  @for (note of notes; track $index) {
+  <div
+    class="note-card"
+    [class.selected-note]="selectedNote?.id === note?.id"
+    (click)="selectNote(note)"
+  >
+    <h3>{{ note.title }}</h3>
+    <p>{{ note.content }}</p>
+  </div>
+  } @if (selectedNote) {
+  <div class="button-container">
+    <button class="edit-button" (click)="editNote()">Edit</button>
+    <button class="delete-button" (click)="deleteNote()">Delete</button>
+  </div>
+  }
+
+  <app-note-form
+    [note]="editedNote"
+    (noteSaved)="saveEditedNote($event)"
+  ></app-note-form>
+</div>
